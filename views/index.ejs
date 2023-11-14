@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VirusTotal Checker</title>
+  </head>
+  <body>
+    <h1>VirusTotal Checker</h1>
+
+    <form action="/" method="post">
+      <label for="link">Enter URL:</label>
+      <input type="text" id="link" name="link" required />
+      <button type="submit">Check</button>
+    </form>
+
+    <% if (result) { %>
+    <p>Result: <%= result %></p>
+    <% } %>
+  </body>
+</html>

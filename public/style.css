@@ -1,0 +1,222 @@
+/* *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+::-webkit-scrollbar{
+    display: none;
+}
+
+html{
+    height: 100vh;
+    background-color: rgb(147, 151, 153);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    display: flex;
+    height: 500px;
+    padding: 20px;
+    background-color: blueviolet;
+    border: 2px solid rgb(211, 179, 211);
+    border-radius: 20px;
+    justify-content: space-between;
+    text-align: center;
+    flex-direction: column;
+    box-shadow: 0px 0px 10px 10px black;
+}
+
+img{
+    height: 100px;
+    width: 200px;
+}
+
+input{
+    height: 40px;
+    outline: none;
+    border: 2px solid grey;
+    border-radius: 10px;
+}
+
+::-webkit-input-placeholder{
+    padding: 10px;
+    font-family:'Courier New', Courier, monospace;
+}
+
+#checkbtn{
+    padding: 7px;
+    background-color: white;
+    border: 1px solid grey;
+    border-radius: 10px;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 17px;
+    color: #999;
+    cursor: pointer;
+}
+
+.sub-img-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sub-desc-text{
+    color: white;
+    text-align: left;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.main-desc-text{
+    color: white;
+    text-align: left;
+    font-size: 22px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.main-head-text{
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 28px;
+    color: white;
+}
+
+#checkResult{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 25px;
+    margin-block: 10px;
+    color: rgb(39, 8, 8);
+    position: absolute;
+    bottom: 0px;
+    left: 40rem;
+    
+}
+.ress{
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid red;
+} */
+
+/* CSS for the link checker application */
+body {
+    background-color: #f4f0f0;
+    background-image: url(./background.avif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+}
+#butn{
+    background-color: #3e8e41;
+    color: #fff;
+    border: none;
+    width: 200px;
+    height: 40px;
+    border-radius: 5px;
+    font-weight: 400;
+    font-family: poppins;
+    font-size: large;
+    cursor: pointer;
+}
+.container {
+     width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.2); /* Transparent background */
+  backdrop-filter: blur(10px); /* Apply a blur effect */
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
+}
+
+.main-head-text {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sub-img-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sub-img-container img {
+    width: 250px;
+    background-color: transparent;
+}
+
+.main-desc-text {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.sub-desc-text {
+    margin-bottom: 10px;
+    font-family: poppins;
+}
+
+#link {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 7px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#checkbtn {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+#checkbtn:hover {
+    background-color: #3e8e41;
+}
+
+.ress {
+    font-size: 400;
+    justify-content: center;
+    border-radius: 5px;
+  
+    color: rgb(57, 228, 10);
+    display: flex;
+    align-items: center;
+    border:1px solid rgb(193, 184, 184);
+    
+}
+#checkResult{
+    font-family: poppins, 'Times New Roman', Times, serif;
+    font-size: 25px;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+    background-color: rgba(255, 255, 255, 0.2); /* Transparent background */
+  backdrop-filter: blur(10px); /* Apply a blur effect */
+  border-radius: 10px;
+  
+    width: auto;
+    
+}
+
+.ress.safe {
+    background-color: #4CAF50;
+}
+
+.ress.malicious {
+    background-color: #f44336;
+}
+
+.ress.not-analyzed {
+    background-color: #2196F3;
+}

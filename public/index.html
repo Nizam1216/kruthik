@@ -1,0 +1,222 @@
+<!-- public/index.html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Malware Link Checker</title>
+
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <form class="container" id="malwareForm" style="margin-top: 12%">
+      <h1 class="main-head-text">Phishing Link Detector</h1>
+      <div class="sub-img-container">
+        <img src="./cyber hawks.png" alt="picture" />
+      </div>
+      <p class="main-desc-text">Use Rules</p>
+      <p class="sub-desc-text">1. Copy any link/URL from the web.</p>
+      <p class="sub-desc-text">2. Check if it's safe or unsafe.</p>
+
+      <p class="result container" id="checkResult"></p>
+      <input
+        type="text"
+        id="link"
+        name="link"
+        placeholder="Enter your link..."
+      />
+      <button type="button" id="butn" onclick="checkMalware()">Check</button>
+    </form>
+
+    <script>
+      async function checkMalware() {
+        const linkInput = document.getElementById("link");
+        const resultContainer = document.getElementById("checkResult");
+
+        try {
+          const response = await fetch("/", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ link: linkInput.value }),
+          });
+
+          if (response.ok) {
+            const result = await response.text();
+
+            // Set the class based on the result
+            resultContainer.className = getResultClass(result);
+
+            resultContainer.innerText = result;
+          } else {
+            resultContainer.innerText = "Error: " + response.status;
+          }
+        } catch (error) {
+          console.error("Error:", error.message);
+          resultContainer.innerText = "Internal Server Error";
+        }
+      }
+
+      // Function to determine the appropriate class based on the result
+      function getResultClass(result) {
+        if (result.includes("safe")) {
+          return "ress safe";
+        } else if (result.includes("malicious")) {
+          return "ress malicious";
+        } else if (result.includes("not-analyzed")) {
+          return "ress not-analyzed";
+        } else {
+          return "ress";
+        }
+      }
+    </script>
+  </body>
+</html> -->
+
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Malware Link Checker</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <form class="container" id="malwareForm" style="margin-top: 12%">
+      <h1 class="main-head-text">Phishing Link Detector</h1>
+      <div class="sub-img-container">
+        <img src="./cyber_hawks-removebg-preview.png" alt="picture" />
+      </div>
+      <p class="main-desc-text">Use Rules</p>
+      <p class="sub-desc-text">1. Copy any link/URL from the web.</p>
+      <p class="sub-desc-text">2. Check if it's safe or unsafe.</p>
+
+      <input
+        type="text"
+        id="link"
+        name="link"
+        placeholder="Enter your link..."
+      />
+      <button type="button" id="butn" onclick="checkMalware()">Check</button>
+    </form>
+
+    <!-- Bootstrap Modal -->
+    <div
+      class="modal"
+      id="resultModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="resultModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="resultModalLabel">Check Result</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p class="result" id="checkResult"></p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      async function checkMalware() {
+        const linkInput = document.getElementById("link");
+        const resultContainer = document.getElementById("checkResult");
+
+        try {
+          const response = await fetch("/", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ link: linkInput.value }),
+          });
+
+          if (response.ok) {
+            const result = await response.text();
+
+            // Set the class based on the result
+            const resultClass = getResultClass(result);
+            resultContainer.className = resultClass;
+
+            // Set the result text
+            resultContainer.innerText = result;
+
+            // Show the modal
+            $("#resultModal").modal("show");
+          } else {
+            resultContainer.innerText = "Error: " + response.status;
+          }
+        } catch (error) {
+          console.error("Error:", error.message);
+          resultContainer.innerText = "Internal Server Error";
+        }
+      }
+
+      // Function to determine the appropriate class based on the result
+      function getResultClass(result) {
+        if (result.includes("safe")) {
+          return "ress safe";
+        } else if (result.includes("malicious")) {
+          return "ress malicious";
+        } else if (result.includes("not-analyzed")) {
+          return "ress not-analyzed";
+        } else {
+          return "ress";
+        }
+      }
+    </script>
+  </body>
+</html>
